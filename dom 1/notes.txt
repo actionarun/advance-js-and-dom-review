@@ -1,0 +1,120 @@
+🧠 addEventListener() என்றால் என்ன?
+ஒரு HTML element-க்கு ஒரு event நடந்தால் என்ன செய்ய வேண்டும் என்று JavaScript-க்கு சொல்ல addEventListener() பயன்படுத்துவோம்.
+
+உதாரணம்:
+
+👉 User button-ஐ click பண்ணுகிறார்
+👉 JavaScript அந்த click-ஐ detect பண்ணும்
+👉 நாம சொன்ன code execute ஆகும்.
+   Basic Syntax:
+      element.addEventListener("event", function);
+      element → எந்த element-க்கு event வேண்டும்
+      "event" → என்ன event? (click, input, submit...)
+      function → event நடந்ததும் என்ன செய்ய வேண்டும்
+ Example:
+ HTML:
+   <button id="btn">Click Me</button>
+ JavaScript:
+    let btn = document.querySelector("#btn");
+
+    btn.addEventListener("click", function() {
+    console.log("Button clicked");
+    });
+
+   Common events:
+   click    → mouse click
+   input    → input value change
+   change   → value change
+   submit   → form submit
+   mouseover → mouse element மேல போகும்
+   keydown  → keyboard key press
+ 
+
+
+
+ 🧠 Event Object என்றால் என்ன?
+    ser ஒரு action பண்ணும்போது, browser அந்த event 
+    பற்றிய சில information-ஐ JavaScript-க்கு ஒரு object-ஆ கொடுக்கும்.
+
+   Example:
+    button.addEventListener("click", function(event) {
+    console.log(event); 
+    });
+    
+
+    🔑 event.target
+    இதுதான் இப்போ நமக்கு முக்கியம்.
+    event.target → எந்த element-ல் event நடந்ததோ அந்த element-ஐ return பண்ணும்.
+
+    🧠 Easy-aa நினைச்சுக்கோ:
+    event → event பற்றிய முழு information
+    event.target → event நடந்த actual 
+    
+
+
+    🧠 input event என்றால் என்ன?
+    User ஒரு <input> box-ல type பண்ணும்போது ஒவ்வொரு 
+    change-க்கும் input event trigger ஆகும்.
+
+    🧠 submit event என்றால் என்ன?
+    Form-ஐ user Submit பண்ணும்போது submit event trigger ஆகும்.
+
+    Example: 
+    <form id="myForm">
+    <input id="name" type="text">
+    <button type="submit">Submit</button>
+    </form>
+    
+    JavaScript:
+    let form = document.querySelector("#myForm");
+    form.addEventListener("submit", function(event) {
+    console.log("Form submitted");
+    })
+
+
+
+    ⚠️ Important: preventDefault()
+    Form submit பண்ணும்போது browser normally page reload பண்ணும்.
+    event.preventDefault();
+
+
+
+    🧠 Event Delegation என்றால் என்ன?
+
+Normally, 3 buttons இருந்தா ஒவ்வொரு button-க்கும் தனித்தனியா event listener போடலாம்:
+
+btn1.addEventListener("click", ...);
+btn2.addEventListener("click", ...);
+btn3.addEventListener("click", ...);
+
+ஆனா buttons நிறைய இருந்தா இது unnecessary.
+
+அதற்கு பதிலா அவைகளோட parent element-க்கு ஒரே ஒரு event listener போடலாம்.
+
+இதுதான் Event Delegation.
+
+Example
+<div id="container">
+  <button>One</button>
+  <button>Two</button>
+  <button>Three</button>
+</div>
+
+ஒவ்வொரு button-க்கும் listener போடாமல்:
+
+let container = document.querySelector("#container");
+
+container.addEventListener("click", function(event) {
+  console.log(event.target);
+});
+
+இப்போ எந்த button click பண்ணினாலும், parent container-க்கு event வரும்.
+
+
+
+
+
+
+
+
+
