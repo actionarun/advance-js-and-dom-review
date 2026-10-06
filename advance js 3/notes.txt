@@ -1,0 +1,161 @@
+
+
+
+
+
+
+
+1️⃣ Synchronous vs Asynchronous
+
+Synchronous na → code one by one, previous line complete 
+aana apram next line execute aagum.
+
+example:
+      console.log("A");
+      console.log("B");
+      console.log("C");
+output:
+      A
+      B
+      C
+
+Asynchronous na → oru task time eduthaalum, 
+JavaScript next work-ai wait pannama continue pannum.
+
+example:
+     console.log("A");
+    setTimeout(() => {
+    console.log("B");
+    }, 2000);
+    console.log("C");
+
+output:
+    A
+    B
+    C
+
+
+
+🧠 Easy-a remember pannu:
+Synchronous → “Wait pannitu next work”
+Asynchronous → “Wait pannama next work”
+
+
+2.Callback Function
+Callback na, oru function-ah innoru function-ku 
+argument-aa pass panni, later execute pannradhu.
+
+example:
+function greet(name, callback) {
+    console.log("Hello " + name);
+    callback();
+   }
+
+function done() {
+    console.log("Done");
+   }
+
+ greet("Arun", done);
+
+
+
+ Callback with setTimeout ⏳
+example:
+      function test(callback) {
+    setTimeout(() => {
+        console.log("A");
+        callback();
+    }, 1000);
+  }
+
+  test(function() {
+    console.log("B");
+  });
+
+output:
+    A
+    B
+
+Promise:
+Promise-na asynchronous operation-oda result-ai represent pannum. Adhu 3 states-la irukkum:
+
+pending → waiting
+fulfilled → success
+rejected → failure
+
+Promise syntax:
+let promise = new Promise((resolve, reject) => {
+    resolve("Success");
+});
+
+promise.then((result) => {
+    console.log(result);
+});
+
+
+
+async / await 🚀
+
+async → indha function-la asynchronous work handle panna porom.
+await means:
+
+getData() return pannra Promise complete aagura varaikkum,
+ showData() function-oda next line-ku pogama wait pannu.
+
+
+ example:
+ function getData() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve("Data received");
+        }, 1000);
+    });
+}
+
+async function showData() {
+    let result = await getData();
+    console.log(result);
+}
+
+showData();
+
+output:Data received
+
+🌐 fetch() என்ன?
+
+fetch() என்பது server/API-க்கு request அனுப்பி data வாங்க use பண்ணுற 
+JavaScript function.
+
+Real-world example:
+
+Movie app-la “Avengers” search பண்ணுறோம் → server/API-kitta
+ request போகும் → movie details திரும்ப வரும்.
+
+அதுக்கு fetch() use பண்ணலாம்.
+
+
+Basic example
+async function getData() {
+    let response = await fetch("https://jsonplaceholder.typicode.com/users");
+
+    let data = await response.json();
+
+    console.log(data);
+}
+
+getData();
+
+
+
+
+
+   keydown event na enna?
+Keyboard-la oru key press pannumbodhu event trigger aagum.
+
+example:let searchInput = document.querySelector("#searchInput");
+
+searchInput.addEventListener("keydown",function(event) {
+    console.log("Key pressed: " + event.key);
+})
+
+

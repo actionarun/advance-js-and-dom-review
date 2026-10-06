@@ -21,6 +21,8 @@
     console.log("Button clicked");
     });
 
+    
+
    Common events:
    click    → mouse click
    input    → input value change
